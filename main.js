@@ -1,5 +1,4 @@
 (function () {
-  /* عند التحميل أو التحديث: أعلى الصفحة دائماً (بدون قفز إلى #) */
   if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
   }
@@ -21,10 +20,6 @@
     }
   });
 
-  /**
-   * رقم واتساب للتواصل: كود الدولة بدون + أو أصفار إضافية، ثم رقم الهاتف كاملاً.
-   * أمثلة: تركيا 905551234567 ، سوريا 9639XXXXXXXX
-   */
   var WHATSAPP_NUMBER = "905315015003";
 
   var waLink = document.getElementById("wa-contact-link");
@@ -56,7 +51,6 @@
     return el ? el.textContent.replace(/\s+/g, " ").trim() : "";
   }
 
-  /* بطاقات الخطوات — مطوية افتراضياً مع تلميح سهم واضح */
   document.querySelectorAll("article.neo-card--step").forEach(function (card) {
     if (card.querySelector(".neo-step-accordion")) {
       return;
@@ -171,7 +165,6 @@
     });
   });
 
-  /* تمييز رابط التنقل حسب المقطع الظاهر تحت الرأس الثابت */
   var SECTION_IDS = ["alert", "papers", "turkey", "syria", "contact"];
   var nav = document.querySelector(".nav-links");
   var navAnchors = nav
@@ -182,7 +175,6 @@
     navAnchors.push(navCta);
   }
   var ticking = false;
-  /** بعد النقر على القائمة: نثبت المقطع المختار ظاهرياً ريثما ينتهي التمرير السلس (الجوال يضعف أحياناً حدث scroll) */
   var navTargetLockId = "";
   var navTargetLockUntil = 0;
   var NAV_LOCK_MS = 1400;
@@ -193,7 +185,7 @@
       return 72;
     }
     var r = header.getBoundingClientRect();
-    return Math.round(r.bottom + 6);
+    return Math.max(24, Math.round(r.bottom + 6));
   }
 
   function updateActiveNav() {
@@ -224,7 +216,6 @@
         activeId = "alert";
       }
 
-      /* قسم واتساب أسفل الصفحة */
       var contactEl = document.getElementById("contact");
       if (contactEl) {
         var cr = contactEl.getBoundingClientRect();
@@ -285,7 +276,6 @@
     });
   }
 
-  /* ظهور العناصر + تأخير متدرّج بسيط حسب الترتيب في الصفحة */
   var revealEls = document.querySelectorAll(".reveal");
   revealEls.forEach(function (el, index) {
     var stagger = Math.min(index, 12) * 0.035;
@@ -313,7 +303,6 @@
     });
   }
 
-  /* روابط #syria-step-… : فتح البطاقة ثم التمرير إلى نفس الخطوة المذكورة */
   document.querySelectorAll('a[href^="#syria-step-"]').forEach(function (anchor) {
     anchor.addEventListener("click", function (e) {
       var href = anchor.getAttribute("href");
