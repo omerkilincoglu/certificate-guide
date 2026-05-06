@@ -2858,6 +2858,10 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
 }
 
 .wa-contact__phone-link {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  text-align: left;
   color: var(--warn-text);
   text-decoration: none;
   transition: color 0.2s;
@@ -3000,6 +3004,10 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
 }
 
 .site-footer__phone {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  text-align: left;
   font-size: clamp(1.02rem, 2.3vw, 1.14rem);
   font-weight: 800;
   color: var(--gold);
