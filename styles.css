@@ -431,8 +431,8 @@ body {
 
 .site-brand__title {
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2.4vw, 1.38rem);
-  font-weight: 800;
+  font-size: clamp(1.12rem, 2.6vw, 1.48rem);
+  font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
   color: var(--brand-tagline);
@@ -807,8 +807,8 @@ body {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 5vw, 2.35rem);
-  font-weight: 800;
+  font-size: clamp(1.78rem, 5.3vw, 2.5rem);
+  font-weight: 900;
   line-height: 1.32;
   margin: 0 0 14px;
   letter-spacing: -0.03em;
