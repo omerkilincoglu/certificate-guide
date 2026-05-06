@@ -258,16 +258,16 @@ body {
     background-image:
       linear-gradient(
         to bottom,
-        rgba(15, 54, 46, 0.4) 0%,
-        rgba(15, 54, 46, 0.2) 38%,
-        rgba(15, 54, 46, 0.6) 78%,
+        rgba(15, 54, 46, 0.34) 0%,
+        rgba(15, 54, 46, 0.24) 42%,
+        rgba(15, 54, 46, 0.44) 74%,
         var(--nav-navy) 100%
       ),
       var(--hero-img-mobile);
-    background-size: cover, 92% auto;
+    background-size: cover, cover;
     /* إنزال لقطة الشهادة قليلاً حتى لا تتداخل مع آخر أسطر المقدمة */
-    background-position: center, 50% 68%;
-    box-shadow: inset 0 0 0 9999px rgba(15, 54, 46, 0.22);
+    background-position: center, 50% 60%;
+    box-shadow: inset 0 0 0 9999px rgba(15, 54, 46, 0.18);
   }
 }
 
@@ -343,7 +343,7 @@ body {
 
 @media (max-width: 520px) {
   .masthead-banner::before {
-    background-position: center, 50% 70%;
+    background-position: center, 50% 58%;
   }
 }
 
