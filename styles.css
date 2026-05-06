@@ -1,4 +1,4 @@
-/* مسار التصديق — زمرد، ذهبي، خلفية صفحة بلون نعناع خفيف جداً */
+/* مسار التصديق: زمرد، ذهبي، خلفية صفحة بلون نعناع خفيف جداً */
 
 :root {
   color-scheme: light;
@@ -11,7 +11,7 @@
   --gold: #b8942f;
   --gold-dark: #9a7a26;
   --gold-soft: rgba(184, 148, 47, 0.12);
-  /* نص الشعار تحت العنوان في الشريط — كريم مثل المرجع */
+  /* نص الشعار تحت العنوان في الشريط: كريم مثل المرجع */
   --brand-tagline: #d1c7a7;
 
   /* Hero art (paths relative to site root) */
@@ -55,13 +55,13 @@
   --font-sans: "Tajawal", "Cairo", system-ui, sans-serif;
   --font-display: "Tajawal", "Cairo", system-ui, sans-serif;
   --font-heading: "Tajawal", "Cairo", system-ui, sans-serif;
-  /* أرقام فقط — النص يبقى Tajawal/Cairo */
+  /* أرقام فقط: النص يبقى Tajawal/Cairo */
   --font-numeric: "IBM Plex Sans Arabic", "Tajawal", system-ui, sans-serif;
   --icon-pin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b8942f' d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z'/%3E%3C/svg%3E");
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --reveal-delay: 0s;
 
-  /* تنبيهات — موحّدة مع لوحة الأخضر والذهبي */
+  /* تنبيهات: موحّدة مع لوحة الأخضر والذهبي */
 
   /* info → أخضر هادئ */
   --alert-info-bg: #edf6f2;
@@ -103,13 +103,13 @@
   --alert-tag-text: #6b4f10;
   --alert-tag-border: #c9a63d;
 
-  /* صناديق ملاحظات موحّدة — كل الخطوات */
+  /* صناديق ملاحظات موحّدة: كل الخطوات */
   --ui-note-bg: #ffffff;
   --ui-note-border: var(--card-border);
   --ui-note-stripe: var(--gold);
   --ui-note-shadow: 0 1px 5px rgba(15, 40, 35, 0.06);
 
-  /* تنبيهات — خلفية كريم وشريط ذهبي */
+  /* تنبيهات: خلفية كريم وشريط ذهبي */
   --warn-callout-bg: #faf4e8;
   --warn-callout-border: hsl(43 30% 78%);
   --warn-callout-stripe: var(--gold-dark);
@@ -176,6 +176,9 @@ body {
   details.neo-step-accordion[open] > .neo-step-accordion__panel {
     animation: none !important;
   }
+  .wa-fab-stack:hover .wa-fab-btn {
+    transform: none;
+  }
 }
 
 .nav-links a:focus-visible,
@@ -183,7 +186,7 @@ body {
 .wa-contact__btn:focus-visible,
 .wa-contact__phone-link:focus-visible,
 .site-footer__phone:focus-visible,
-.wa-fab:focus-visible,
+.wa-fab-stack:focus-visible,
 .neo-step-accordion__summary:focus-visible,
 .nav-cta:focus-visible,
 .btn--gold:focus-visible {
@@ -262,7 +265,8 @@ body {
       ),
       var(--hero-img-mobile);
     background-size: cover, cover;
-    background-position: center, 50% 44%;
+    /* إنزال لقطة الشهادة قليلاً حتى لا تتداخل مع آخر أسطر المقدمة */
+    background-position: center, 50% 58%;
     box-shadow: inset 0 0 0 9999px rgba(15, 54, 46, 0.22);
   }
 }
@@ -279,13 +283,67 @@ body {
   }
 
   .hero--pro {
-    padding-bottom: clamp(32px, 10vw, 56px);
+    padding-bottom: clamp(40px, 12vw, 64px);
+  }
+
+  /* فقرة المقدمة: لوحة خفيفة فوق الصورة لتحسين التباين على الشاشات الصغيرة */
+  .hero--pro .hero-lead {
+    max-width: none;
+    width: 100%;
+    margin-top: 6px;
+    padding: 14px 16px 16px;
+    border-radius: 14px;
+    font-weight: 600;
+    line-height: 1.82;
+    text-wrap: balance;
+    color: rgba(255, 255, 255, 0.96);
+    background: rgba(10, 36, 30, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  .hero--pro .hero__actions {
+    margin-top: 22px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .wa-fab-stack {
+    right: calc(12px + env(safe-area-inset-right));
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+
+  .wa-fab-label {
+    padding: 8px 13px;
+    font-size: 0.8rem;
+    max-width: min(62vw, 11.5rem);
+  }
+
+  .wa-fab-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .wa-fab__icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@supports (backdrop-filter: blur(4px)) {
+  @media (max-width: 767.98px) {
+    .hero--pro .hero-lead {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(10, 36, 30, 0.48);
+    }
   }
 }
 
 @media (max-width: 520px) {
   .masthead-banner::before {
-    background-position: center, 50% 42%;
+    background-position: center, 50% 56%;
   }
 }
 
@@ -439,6 +497,46 @@ body {
   position: relative;
 }
 
+.header-cta-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+  direction: rtl;
+}
+
+.header-cta-hint {
+  margin: 0;
+  padding: 6px 12px;
+  max-width: min(22rem, 92vw);
+  font-size: clamp(0.68rem, 1.65vw, 0.78rem);
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--brand-tagline);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  background: rgba(15, 54, 46, 0.55);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.header-cta-hint[hidden] {
+  display: none !important;
+}
+
+.header-cta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+  direction: rtl;
+}
+
 .nav-links a.is-active::after {
   content: "";
   position: absolute;
@@ -525,6 +623,14 @@ body {
     padding: 9px 16px;
   }
 
+  .header-cta-stack {
+    flex-shrink: 0;
+  }
+
+  .header-cta-row {
+    flex-shrink: 0;
+  }
+
   .nav-cta {
     flex-shrink: 0;
     padding: 10px 24px;
@@ -544,26 +650,66 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    /* فصل أوضح بين شريط الأقسام وأزرار الإجراء حتى لا يبدو الرأس مزدحماً */
+    gap: 18px;
   }
   .nav-links {
     direction: rtl;
+    /* flex-start كان يجمع الحبوب نحو يمين الشاشة في RTL فيبدو الإزاحة */
     justify-content: center;
-    flex-wrap: wrap;
+    justify-content: safe center;
+    flex-wrap: nowrap;
     width: 100%;
     max-width: 100%;
     gap: 8px;
-    overflow-x: visible;
-    padding: 4px 8px 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    padding: 4px 10px 10px;
+  }
+  .nav-links::-webkit-scrollbar {
+    height: 5px;
+  }
+  .nav-links::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.35);
+    border-radius: 999px;
   }
   .nav-links a {
     font-size: 0.7rem;
     padding: 7px 12px;
     flex-shrink: 0;
+    scroll-snap-align: center;
   }
-  .nav-cta {
+  .header-cta-stack {
     width: 100%;
-    max-width: min(320px, 100%);
+    max-width: 100%;
+    align-items: stretch;
+    margin-top: 2px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .header-cta-hint {
+    max-width: none;
+    text-align: center;
+  }
+  .header-cta-row {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+  }
+  .header-cta-row .nav-cta {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    padding-inline: 12px;
+    font-size: 0.72rem;
   }
   .site-brand {
     max-width: 100%;
@@ -586,12 +732,12 @@ body {
 
   .header-inner {
     padding-inline: 12px;
-    padding-block: 10px;
-    gap: 10px;
+    padding-block: 12px;
+    gap: 12px;
   }
 
   .nav-links a {
-    padding: 8px 11px;
+    padding: 7px 10px;
     font-size: 0.68rem;
   }
 
@@ -1080,6 +1226,158 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* عمودان؛ عمود واحد في الجوال؛ الصف الأخير بعدد فردي: البطاقة الأخيرة في المنتصف وبعرض عمود واحد */
+.neo-doc-grid--services {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2.2vw, 20px);
+  max-width: min(1280px, 100%);
+  width: 100%;
+  margin-inline: auto;
+}
+
+@media (max-width: 520px) {
+  .neo-doc-grid--services {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 521px) {
+  #services .neo-doc-grid--services > .neo-card--service:last-child:nth-child(odd):not(:only-child) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: calc((100% - clamp(14px, 2.2vw, 20px)) / 2);
+  }
+}
+
+/* قسم الخدمات: RTL؛ نص أقصر قليلاً من حافة البطاقة، ومساحة قريبة من سطرّين */
+#services.section--neo {
+  direction: rtl;
+}
+
+#services .neo-card__detail--service {
+  align-self: start;
+  width: 100%;
+  max-width: min(55ch, calc(100% - 0.8rem));
+  min-width: 0;
+  min-height: calc(2 * 1.78em);
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+  text-align: start;
+  letter-spacing: 0;
+  /* مطابق حجم سطر .neo-card__body؛ لون أوضح كالنص الأساسي */
+  font-size: clamp(0.96rem, 2.05vw, 1.04rem);
+  line-height: 1.78;
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* «اجعلنا وكيلك» + جملة الدعوة — هدف رابط الرأس */
+.services-delegate-block {
+  scroll-margin-top: calc(var(--nav-h) + 20px);
+  margin: clamp(24px, 3.8vw, 38px) auto 0;
+  max-width: min(640px, 100%);
+  text-align: center;
+  direction: rtl;
+}
+
+.services-delegate-block__title {
+  position: relative;
+  margin: 0 0 12px;
+  padding-bottom: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 2.7vw, 1.42rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--text-heading);
+}
+
+.services-delegate-block__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: min(200px, 72%);
+  height: 3px;
+  border-radius: 3px;
+  background: var(--gold);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.22);
+}
+
+.services-delegate-message {
+  margin: 14px 0 0;
+  font-size: clamp(0.96rem, 2.05vw, 1.04rem);
+  line-height: 1.78;
+  color: var(--muted);
+}
+
+.neo-card--service {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  text-align: start;
+  min-height: 0;
+  padding: clamp(1.05rem, 2.4vw, 1.28rem) clamp(1.05rem, 2.5vw, 1.32rem);
+}
+
+.neo-card--service.neo-card:hover {
+  transform: translateY(-3px) scale(1.004);
+}
+
+.neo-card__service-head {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  direction: rtl;
+}
+
+.neo-card__service-head .neo-card__ico--service {
+  flex-shrink: 0;
+  width: 2.85rem;
+  height: 2.85rem;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.28rem;
+  line-height: 1;
+  border-radius: 11px;
+  background: var(--accent-mid);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(15, 54, 46, 0.14);
+}
+
+.neo-card__service-head .neo-card__title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0.12rem 0 0;
+  text-align: start;
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 2.3vw, 1.12rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: var(--text-heading);
+}
+
+/* مقاس سطر مثل .neo-card__body؛ لون النص الأساسي (--text) أوضح من --muted */
+.neo-card__detail--service {
+  max-width: none;
+  margin: 0;
+  padding-inline-end: 0;
+  text-align: start;
+  font-size: clamp(0.96rem, 2.05vw, 1.04rem);
+  line-height: 1.78;
+  color: var(--text);
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+
 @media (max-width: 1100px) {
   .neo-doc-grid--essentials {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1087,7 +1385,7 @@ body {
 }
 
 @media (max-width: 960px) {
-  .neo-doc-grid:not(.neo-doc-grid--essentials) {
+  .neo-doc-grid:not(.neo-doc-grid--essentials):not(.neo-doc-grid--services) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .neo-doc-grid--sy {
@@ -1182,15 +1480,20 @@ body {
 }
 
 .neo-card--doc.neo-card--doc-ico.neo-card--tall {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   text-align: center;
   min-height: 8.75rem;
+  padding-top: 12px;
 }
 
 .neo-card--doc.neo-card--doc-ico.neo-card--tall .neo-card__ico {
-  width: 3.25rem;
-  height: 3.25rem;
-  font-size: 1.45rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  font-size: 1.65rem;
+  margin: 0 0 14px;
 }
 
 .neo-card--doc.neo-card--doc-ico.neo-card--tall .neo-card__detail {
@@ -1961,7 +2264,7 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   color: var(--text-heading);
 }
 
-/* عنبر ووردي = تحذير — نمط ذهبي موحّد */
+/* عنبر ووردي = تحذير: نمط ذهبي موحّد */
 .neo-callout--rose,
 .neo-callout--amber {
   border-color: var(--warn-callout-border);
@@ -2163,12 +2466,12 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
 .neo-passport-hint a {
   color: var(--warn-callout-strong);
   font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
 }
 
 .neo-passport-hint a:hover {
   color: var(--gold-dark);
+  text-decoration: none;
 }
 
 .neo-passport-hint--syria-intro-follow {
@@ -2204,7 +2507,7 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   box-shadow: 0 1px 8px rgba(15, 40, 35, 0.05);
 }
 
-/* فاصل أفقي + وسيط على الخط — مثل «دمشق» بين المحافظة والخطوات */
+/* فاصل أفقي + وسيط على الخط: مثل «دمشق» بين المحافظة والخطوات */
 .subheading.subheading--divider {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -2382,7 +2685,7 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   margin: 14px 0 0;
 }
 
-/* زر الخريطة بمحاذاة بداية السطر (يمين في RTL) — وليس في الوسط */
+/* زر الخريطة بمحاذاة بداية السطر (يمين في RTL): وليس في الوسط */
 .map-link-row.map-link-row--rtl-inline-start {
   display: flex;
   width: 100%;
@@ -2521,14 +2824,14 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
 
 .wa-contact__text {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: clamp(0.98rem, 2.1vw, 1.06rem);
   line-height: 1.82;
   color: var(--muted);
 }
 
 .wa-contact__subtext {
   margin: 14px 0 0;
-  font-size: 0.8rem;
+  font-size: clamp(0.9rem, 1.95vw, 0.98rem);
   line-height: 1.74;
   color: var(--dim);
 }
@@ -2621,17 +2924,6 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   .wa-contact__btn {
     width: 100%;
   }
-
-  .site-footer__inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .site-footer__desc {
-    margin-inline: auto;
-  }
-  .site-footer__aside {
-    align-items: center;
-  }
 }
 
 .site-footer {
@@ -2647,9 +2939,14 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   margin: 0 auto;
   padding: clamp(36px, 5.5vw, 48px) 20px clamp(26px, 3.5vw, 32px);
   display: grid;
-  grid-template-columns: 1fr auto;
+  /* minmax(0,1fr) يمنع عمود النص من الضيق الشديد بجانب عمود الهاتف */
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: clamp(28px, 4vw, 44px);
   text-align: right;
+}
+
+.site-footer__brand {
+  min-width: 0;
 }
 
 .site-footer__title {
@@ -2666,6 +2963,28 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   font-size: 0.84rem;
   line-height: 1.78;
   color: rgba(255, 255, 255, 0.72);
+  text-wrap: balance;
+}
+
+/* هاتف: فقرة التذييل بعرض الشاشة بدل شريط ضيق */
+@media (max-width: 640px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: clamp(22px, 4vw, 32px);
+  }
+
+  .site-footer__desc {
+    max-width: none;
+    width: 100%;
+    margin-inline: auto;
+    font-size: 0.88rem;
+    line-height: 1.82;
+  }
+
+  .site-footer__aside {
+    align-items: center;
+  }
 }
 
 .site-footer__aside {
@@ -2706,7 +3025,7 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* زر واتساب عائم: يمين الشاشة (فيزيائياً) + توهج متحرك — في RTL كان inset-inline-end يضعه يساراً */
+/* زر واتساب عائم: يمين الشاشة (فيزيائياً) + توهج متحرك: في RTL كان inset-inline-end يضعه يساراً */
 @keyframes wa-fab-glow {
   0%,
   100% {
@@ -2721,12 +3040,43 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   }
 }
 
-.wa-fab {
+/* مجموعة عائمة: نص «تواصل معنا» + زر واتساب (محاذاة يمين الشاشة) */
+.wa-fab-stack {
   position: fixed;
-  left: auto;
   right: calc(20px + env(safe-area-inset-right));
   bottom: calc(20px + env(safe-area-inset-bottom));
   z-index: 900;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  direction: ltr;
+  text-decoration: none;
+  color: inherit;
+}
+
+.wa-fab-label {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text-heading);
+  background: linear-gradient(180deg, #faf9f6 0%, #f0eeea 100%);
+  border: 1px solid rgba(15, 40, 35, 0.1);
+  box-shadow:
+    0 2px 12px rgba(15, 40, 35, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  white-space: nowrap;
+  max-width: min(70vw, 14rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wa-fab-btn {
+  flex-shrink: 0;
   width: 56px;
   height: 56px;
   display: grid;
@@ -2736,21 +3086,25 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   color: #fff;
   border: 1px solid hsl(0 0% 100% / 0.25);
   box-shadow: 0 10px 32px hsl(142 65% 38% / 0.45);
-  text-decoration: none;
   transition:
     transform 0.2s var(--ease-out),
     filter 0.2s;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .wa-fab {
+  .wa-fab-btn {
     animation: wa-fab-glow 2.4s ease-in-out infinite;
   }
 }
 
-.wa-fab:hover {
+.wa-fab-stack:hover .wa-fab-btn {
   transform: scale(1.06);
   filter: brightness(1.05);
+}
+
+.wa-fab-stack:hover .wa-fab-label {
+  border-color: rgba(184, 148, 47, 0.35);
+  color: var(--forest-mid);
 }
 
 .wa-fab__icon {
