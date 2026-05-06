@@ -25,12 +25,7 @@
   var waLink = document.getElementById("wa-contact-link");
   var waFab = document.getElementById("wa-fab-link");
   if (WHATSAPP_NUMBER && /^\d{10,15}$/.test(WHATSAPP_NUMBER)) {
-    var prefill = "مرحباً، لدي إضافة أو تنبيه يخص دليل تصديق الشهادات:\n\n";
-    var waHref =
-      "https://wa.me/" +
-      WHATSAPP_NUMBER +
-      "?text=" +
-      encodeURIComponent(prefill);
+    var waHref = "https://wa.me/" + WHATSAPP_NUMBER;
     if (waLink) {
       waLink.href = waHref;
     }
