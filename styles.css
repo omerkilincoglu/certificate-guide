@@ -149,7 +149,10 @@ body {
 .neo-card__num,
 .fee,
 .step-list.step-list--ordered > li::before,
-.neo-step-accordion__panel .neo-card__body > .step-list.step-list--ordered > li::before,
+.neo-step-accordion__panel
+  .neo-card__body
+  > .step-list.step-list--ordered
+  > li::before,
 .wa-contact__phone-link,
 .site-footer__phone {
   font-family: var(--font-numeric);
@@ -236,13 +239,17 @@ body {
     var(--hero-img-desktop);
   background-repeat: no-repeat, no-repeat;
   background-size: cover, cover;
-  background-position: center, 48% 40%;
+  background-position:
+    center,
+    48% 40%;
   box-shadow: inset 0 0 0 9999px rgba(15, 54, 46, 0.16);
 }
 
 @media (min-width: 1400px) {
   .masthead-banner::before {
-    background-position: center, 46% 38%;
+    background-position:
+      center,
+      46% 38%;
   }
 }
 
@@ -266,14 +273,18 @@ body {
       var(--hero-img-mobile);
     background-size: cover, cover;
     /* إنزال لقطة الشهادة قليلاً حتى لا تتداخل مع آخر أسطر المقدمة */
-    background-position: center, 50% 60%;
+    background-position:
+      center,
+      50% 60%;
     box-shadow: inset 0 0 0 9999px rgba(15, 54, 46, 0.18);
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023.98px) and (orientation: portrait) {
   .masthead-banner::before {
-    background-position: center, 50% 46%;
+    background-position:
+      center,
+      50% 46%;
   }
 }
 
@@ -343,7 +354,9 @@ body {
 
 @media (max-width: 520px) {
   .masthead-banner::before {
-    background-position: center, 50% 58%;
+    background-position:
+      center,
+      50% 58%;
   }
 }
 
@@ -451,7 +464,6 @@ body {
     0 1px 3px rgba(0, 0, 0, 0.55),
     0 0 12px rgba(209, 199, 167, 0.12);
 }
-
 
 .nav-links {
   display: flex;
@@ -1242,7 +1254,9 @@ body {
 }
 
 @media (min-width: 521px) {
-  #services .neo-doc-grid--services > .neo-card--service:last-child:nth-child(odd):not(:only-child) {
+  #services
+    .neo-doc-grid--services
+    > .neo-card--service:last-child:nth-child(odd):not(:only-child) {
     grid-column: 1 / -1;
     justify-self: center;
     width: 100%;
@@ -1647,8 +1661,14 @@ body {
   color: var(--muted);
 }
 
-.neo-card--step.phase-tr .neo-step-accordion__loc-wrap .neo-card__loc-strip + .neo-card__kicker,
-.neo-card--step.phase-sy .neo-step-accordion__loc-wrap .neo-card__loc-strip + .neo-card__kicker {
+.neo-card--step.phase-tr
+  .neo-step-accordion__loc-wrap
+  .neo-card__loc-strip
+  + .neo-card__kicker,
+.neo-card--step.phase-sy
+  .neo-step-accordion__loc-wrap
+  .neo-card__loc-strip
+  + .neo-card__kicker {
   margin-top: 6px;
 }
 
@@ -2106,7 +2126,10 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   width: 100%;
 }
 
-.neo-card--translation-step .neo-card__body > .neo-doc-chip-list > .neo-doc-chip {
+.neo-card--translation-step
+  .neo-card__body
+  > .neo-doc-chip-list
+  > .neo-doc-chip {
   width: fit-content;
   max-width: 100%;
 }
@@ -2255,6 +2278,14 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   color: var(--text-heading);
 }
 
+.neo-callout-inline-title {
+  display: inline;
+  margin-right: 0.45em;
+  font-size: clamp(0.92rem, 2vw, 1rem);
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
 .neo-callout--info,
 .neo-callout--info.neo-callout--copy-total {
   border-color: var(--ui-note-border);
@@ -2282,6 +2313,34 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
 .neo-callout--amber strong {
   color: var(--warn-callout-strong);
 }
+
+@keyframes neo-callout-alert-glow {
+  0%, 100% {
+    background: rgba(255, 102, 102, 0.08);
+    box-shadow: 0 0 0 0 rgba(217, 62, 62, 0.14);
+    border-color: #d93e3e;
+  }
+  50% {
+    background: rgba(255, 102, 102, 0.18);
+    box-shadow: 0 0 24px 6px rgba(217, 62, 62, 0.18);
+    border-color: #e84a4a;
+  }
+}
+
+.neo-callout--alert {
+  border-color: #d93e3e;
+  border-inline-start-color: #b92a2a;
+  border-inline-start-width: 4px;
+  background: rgba(255, 102, 102, 0.08);
+  color: #2b1b1b;
+  animation: neo-callout-alert-glow 2.2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(217, 62, 62, 0.12);
+}
+
+.neo-callout--alert strong {
+  color: #a12222;
+}
+
 
 .neo-callout--inline-lead strong {
   display: inline;
@@ -2458,7 +2517,11 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--warn-callout-strong);
-  background: color-mix(in srgb, var(--warn-callout-stripe) 12%, var(--warn-callout-bg));
+  background: color-mix(
+    in srgb,
+    var(--warn-callout-stripe) 12%,
+    var(--warn-callout-bg)
+  );
   border: 1px solid var(--warn-callout-border);
 }
 
@@ -2553,6 +2616,10 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   font-size: clamp(0.82rem, 1.8vw, 0.9rem);
   font-weight: 800;
   color: var(--muted);
+}
+
+.step-list-heading.step-list-heading--spaced {
+  margin-top: 28px;
 }
 
 .neo-card__body > .step-list-heading:first-child {
@@ -2683,6 +2750,18 @@ details.neo-step-accordion[open] .neo-step-accordion__chev {
   border: 1px solid hsl(var(--hue) 40% 40% / 0.35);
   margin: 0 4px;
   vertical-align: baseline;
+}
+
+.highlight {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(184, 148, 47, 0.12);
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin: 0 2px;
+}
+
 }
 
 .map-link-row {
