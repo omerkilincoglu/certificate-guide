@@ -274,42 +274,6 @@
     });
   }
 
-  var delegateNav = document.querySelector(".nav-cta--delegate");
-  var headerCtaHint = document.getElementById("header-cta-hint");
-  if (delegateNav && headerCtaHint) {
-    var DELEGATE_SCROLL_MS = 1000;
-    var HINT_HIDE_MS = 2800;
-    delegateNav.addEventListener(
-      "click",
-      function (e) {
-        e.preventDefault();
-        var hint =
-          delegateNav.getAttribute("data-nav-hint") ||
-          "جارٍ نقلك إلى قسم التواصل لتفويض متابعتك…";
-        headerCtaHint.textContent = hint;
-        headerCtaHint.hidden = false;
-        navTargetLockId = "delegate-anchor";
-        navTargetLockUntil = Date.now() + DELEGATE_SCROLL_MS + 2000;
-        updateActiveNav();
-        window.setTimeout(function () {
-          var target = document.getElementById("delegate-anchor");
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-          if (window.history && window.history.pushState) {
-            window.history.pushState(null, "", "#delegate-anchor");
-          }
-          window.dispatchEvent(new Event("scroll"));
-        }, DELEGATE_SCROLL_MS);
-        window.setTimeout(function () {
-          headerCtaHint.hidden = true;
-          headerCtaHint.textContent = "";
-        }, HINT_HIDE_MS);
-      },
-      true,
-    );
-  }
-
   var revealEls = document.querySelectorAll(".reveal");
   revealEls.forEach(function (el, index) {
     var stagger = Math.min(index, 12) * 0.035;
